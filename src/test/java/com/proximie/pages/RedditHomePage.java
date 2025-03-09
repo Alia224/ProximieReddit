@@ -14,7 +14,7 @@ public class RedditHomePage {
 	@FindBy(xpath = "//ul[@id='sr-bar']//li")
 	public List<WebElement> subreddits;
 
-	@FindBy(how = How.XPATH, using = "(//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title'])[1]")
+	@FindBy(xpath= "(//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title']")
 	public WebElement SecondRow;
 
 	@FindBy(xpath = "//div[@class='content']/div/div[5]/div[@class='midcol unvoted']//div[@class='arrow up login-required access-required']")
