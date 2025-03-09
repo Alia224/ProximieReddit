@@ -72,12 +72,21 @@ public class RedditGamingsteps extends CommonMethods {
 
 	@Then("I verify in the second post for the title if contains “Nintendo” Thumbs up or if the title does not contain “Nintendo” Thumbs down")
 	public void i_verify_in_the_second_post_for_the_title_if_contains_nintendo_thumbs_up_or_if_the_title_does_not_contain_nintendo_thumbs_down() {
-		waitForVisibility(
-				By.xpath("//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title']"));
-		String Title = driver
-				.findElement(By.xpath(
-						"//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title']"))
-				.getText();
+		String Title;
+		if (waitForVisibility(By.xpath(
+				"//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title']")) != null) {
+			Title = driver
+					.findElement(By.xpath(
+							"//div[@class='content']/div/div[5]//div[@class='entry unvoted']//div//p[@class='title']"))
+					.getText();
+
+		} else {
+			Title = driver
+					.findElement(By.xpath(
+							"//div[@class='content']/div/div[6]//div[@class='entry unvoted']//div//p[@class='title']"))
+					.getText();
+		}
+
 		System.out.println("This is the Title-->" + Title);
 		if (Title.contains("Nintendo")) {
 			Reddithomepage.ThumbsUp.click();
